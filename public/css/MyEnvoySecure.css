@@ -1,0 +1,514 @@
+/* 
+    Created on : 13.04.2015, 19:48:09
+    Author     : Fabi Maier
+*/
+
+@media only screen and (min-width: 1220px) {
+
+    div#mes_messenger_form {
+        position: relative;
+        width: 60%;
+        min-width: 1000px;
+        margin: 0px auto;
+        margin-top: 60px;
+    }
+
+    div#mes_messenger_head, div#mes_messenger_content {
+        margin-bottom: 15px;
+        background-color: white;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+    }
+
+    div#mes_messenger_content {
+        position: relative;
+        padding: 10px;
+        display: none;
+    }
+
+    div#mes_scrollarrow {
+        background-image: url(../img/circle_arrow-down-48.png);
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        right: 20px;
+        top: 600px;
+        opacity: 0.6;
+        cursor: pointer;
+        display: none;
+    }
+
+    div#mes_scrollarrow:hover {
+        opacity: 0.8;
+    }
+
+    div#mes_alert {
+        z-index: 1000;
+        position: absolute;
+        background-color: #ff3333;
+        color: white;
+        padding: 20px;
+        font-weight: bold;
+        left: 80px;
+        right: 80px;
+        top: 10px;
+        text-align: center;
+        box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.3);
+        display: none;
+        cursor: pointer;
+    }
+
+    input[type="text"].mes_input, input[type="password"].mes_input {
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+        transition: all 0.5s ease;
+        border: 1px solid #cccccc;
+        margin: 10px;
+        padding: 10px;
+        width: 300px;
+        max-width: 76%;
+        font-family: Arial;
+    }
+
+    input[type="text"].mes_input:focus, input[type="password"].mes_input:focus {
+        box-shadow: 0 0 2px #66ccff;
+        background-color: #fff;
+        border: 1px solid #66ccff;
+        outline: none;
+    }
+
+    input[type="submit"].mes_input {
+        width: auto;
+        font-size: 18px;
+        margin-top: 10px;
+        padding: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        cursor: pointer;
+        background: #6699ff;
+        border: 1px solid #6699ff;
+        color: white;
+        font-weight: normal;
+    }
+
+    input[type="submit"].mes_input:hover {
+        background-color: #0099ff;
+        border-color: #6699ff;
+    }
+
+    div#mes_message_log {
+        height: 650px;
+        background-color: #eeeeee;
+        overflow-x: hidden;
+        overflow-y: auto;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.15) inset;
+    }
+
+    div#mes_message_log::-webkit-scrollbar {
+        display: none;
+    }
+
+    textarea.mes_input {
+        width: 98.1%;
+        margin-top: 10px;
+        height: 100px;
+        resize: none;
+        font-family: Arial;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+        transition: all 0.5s ease;
+    }
+
+    textarea.mes_input:focus {
+        box-shadow: 0 0 2px #66ccff;
+        background-color: #fff;
+        border: 1px solid #66ccff;
+        outline: none;
+    }
+
+    div.mes_message {
+        position: relative;
+        background-color: white;
+        display: inline-block;
+        margin: 10px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font-family: Arial;
+        font-size: 14px;
+        padding: 10px 10px 10px 10px;
+        line-height: 17px;
+        max-width: 70%;
+        box-shadow: 0px 1px 1px #aaa;
+    }
+
+    div.mes_clear {
+        clear: both;
+    }
+
+    div.mes_message.mes_you {
+        float: left;
+    }
+
+    div.mes_message.mes_me {
+        float: right;
+        background-color: #EFFDDE;
+        box-shadow: 0px 1px 1px #6CC264;
+    }
+
+    div.mes_message_head {
+        font-weight: bold;
+        margin-bottom: 2px;
+    }
+
+    div.mes_message_content {
+        float: left;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    div.mes_message_footer {
+        font-size: 12px;
+        color: #aaa;
+        float: right;
+        margin-left: 10px;
+    }
+
+    div.mes_me div.mes_message_footer {
+        color: #6CC264;
+    }
+
+    div#mes_alternate span {
+        position: absolute;
+        left: 555px;
+        margin-top: -10px;
+        background-color: #eeeeee;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    div#mes_alternate {
+        text-align: center;
+    }
+
+    div#mes_alternate input.mes_input {
+        margin-top: 20px;
+    }
+
+    div#mes_loader {
+        display: none;
+        text-align: center;
+    }
+
+    button#mes_share {
+        display: none;
+        background-image: url(../img/share32.png);
+        width: 32px;
+        height: 32px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        margin: 12px;
+        float: right;
+    }
+
+    div#mes_window {
+        display: none;
+        position: absolute;
+        background: url(../img/overlay.png);
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: 10000;
+        cursor: pointer;
+    }
+
+    div#mes_window div {
+        background-color: white;
+        position: relative;
+        margin: 50px auto;
+        width: 1000px;
+        cursor: default;
+    }
+
+    div#mes_window_content_qr {
+        text-align: center;
+        padding-top: 30px;
+    }
+
+    div#mes_window_content {
+        text-align: center;
+        padding-bottom: 30px;
+    }
+
+    div#mes_window_content a {
+        text-decoration: none;
+        color: #0099ff;
+    }
+}
+
+@media only screen and (max-width: 1220px) {
+    div#header {
+        display: none;
+    }
+
+    div#mes_messenger_form {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        overflow: hidden;
+    }
+
+    div#mes_messenger_head, div#mes_messenger_content {
+        margin-bottom: 15px;
+        background-color: white;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+        padding-bottom: 5px;
+    }
+
+    div#mes_messenger_content {
+        position: absolute;
+        top: 100px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        padding: 10px;
+        display: none;
+        margin-bottom: 0px;
+    }
+
+    div#mes_scrollarrow {
+        background-image: url(../img/circle_arrow-down-48.png);
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        right: 20px;
+        bottom: 50px;
+        opacity: 0.6;
+        cursor: pointer;
+        display: none;
+    }
+
+    div#mes_scrollarrow:hover {
+        opacity: 0.8;
+    }
+
+    div#mes_alert {
+        z-index: 1000;
+        position: absolute;
+        background-color: #ff3333;
+        color: white;
+        padding: 20px;
+        font-weight: bold;
+        left: 80px;
+        right: 80px;
+        top: 10px;
+        text-align: center;
+        box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.3);
+        display: none;
+        cursor: pointer;
+    }
+
+    input[type="text"].mes_input, input[type="password"].mes_input {
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+        transition: all 0.5s ease;
+        border: 1px solid #cccccc;
+        margin-top: 5px;
+        margin-left: 5px;
+        padding: 10px;
+        width: 80%;
+        font-family: Arial;
+    }
+
+    input[type="text"].mes_input:focus, input[type="password"].mes_input:focus {
+        box-shadow: 0 0 2px #66ccff;
+        background-color: #fff;
+        border: 1px solid #66ccff;
+        outline: none;
+    }
+
+    input[type="submit"].mes_input {
+        width: auto;
+        font-size: 18px;
+        margin-top: 10px;
+        margin-left: 5px;
+        padding: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        cursor: pointer;
+        background: #6699ff;
+        border: 1px solid #6699ff;
+        color: white;
+        font-weight: normal;
+    }
+
+    input[type="submit"].mes_input:hover {
+        background-color: #0099ff;
+        border-color: #6699ff;
+    }
+
+    div#mes_message_log {
+        position: absolute;
+        top: 10px;
+        bottom: 40px;
+        left: 0px;
+        right: 0px;
+        background-color: #eeeeee;
+        overflow-x: hidden;
+        overflow-y: auto;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.15) inset;
+    }
+
+    div#mes_message_log::-webkit-scrollbar {
+        display: none;
+    }
+
+    textarea.mes_input {
+        position: absolute;
+        bottom: 0px;
+        left: 5px;
+        right: 5px;
+        height: 15px;
+        width: 90%;
+        resize: none;
+        font-family: Arial;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+        transition: all 0.5s ease;
+    }
+
+    textarea.mes_input:focus {
+        box-shadow: 0 0 2px #66ccff;
+        background-color: #fff;
+        border: 1px solid #66ccff;
+        outline: none;
+    }
+
+    div.mes_message {
+        position: relative;
+        background-color: white;
+        display: inline-block;
+        margin: 10px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font-family: Arial;
+        font-size: 14px;
+        padding: 10px 10px 10px 10px;
+        line-height: 17px;
+        max-width: 70%;
+        box-shadow: 0px 1px 1px #aaa;
+    }
+
+    div.mes_clear {
+        clear: both;
+    }
+
+    div.mes_message.mes_you {
+        float: left;
+    }
+
+    div.mes_message.mes_me {
+        float: right;
+        background-color: #EFFDDE;
+        box-shadow: 0px 1px 1px #6CC264;
+    }
+
+    div.mes_message_head {
+        font-weight: bold;
+        margin-bottom: 2px;
+    }
+
+    div.mes_message_content {
+        float: left;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    div.mes_message_footer {
+        font-size: 12px;
+        color: #aaa;
+        float: right;
+        margin-left: 10px;
+    }
+
+    div.mes_me div.mes_message_footer {
+        color: #6CC264;
+    }
+
+    div#mes_alternate span {
+        position: absolute;
+        margin-left: -10px;
+        margin-top: -10px;
+        background-color: #eeeeee;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    div#mes_alternate {
+        text-align: center;
+    }
+
+    div#mes_alternate input.mes_input {
+        margin-top: 20px;
+    }
+
+    div#mes_loader {
+        display: none;
+        text-align: center;
+    }
+
+    button#mes_share {
+        display: none;
+        background-image: url(../img/share32.png);
+        width: 32px;
+        height: 32px;
+        border: none;
+        z-index: 500;
+        background-color: transparent;
+        cursor: pointer;
+        margin: 12px;
+        margin-top: -40px;
+        float: right;
+    }
+
+    div#mes_window {
+        display: none;
+        position: absolute;
+        background: url(../img/overlay.png);
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: 10000;
+        cursor: pointer;
+    }
+
+    div#mes_window div {
+        background-color: white;
+        position: relative;
+        margin: 50px auto;
+        width: 100%;
+        cursor: default;
+    }
+
+    div#mes_window_content_qr {
+        text-align: center;
+        padding-top: 30px;
+    }
+    
+    div#mes_window_content_qr canvas {
+        width: 90%;
+    }
+
+    div#mes_window_content {
+        text-align: center;
+        padding-bottom: 30px;
+    }
+
+    div#mes_window_content a {
+        text-decoration: none;
+        color: #0099ff;
+    }
+}
