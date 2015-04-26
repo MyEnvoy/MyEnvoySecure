@@ -9,7 +9,6 @@ include '../core/MyEnvoySecure.class.php';
         <meta charset="UTF-8">
         <meta name="description" content="With MyEnvoy you are able to communicate in a completely encrypted way.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="img/logo38.ico">
         <link rel="stylesheet" media="screen" type="text/css" href="css/main.css">
         <link rel="stylesheet" media="screen" type="text/css" href="css/MyEnvoySecure.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
