@@ -11,17 +11,25 @@ var MyEnvoySecure = function (element_prefix, server_script) {
     var _server = server_script;
     var _audioElement;
     var _playSound = false;
+    var _newMessageCount = 0;
+    var _favicon;
 
     $.getScript('js/jquery.qrcode.js');
+    $.getScript('js/favico.min.js');
 
     $(window).blur(function () {
         _playSound = true;
     }).focus(function () {
         _playSound = false;
+        _newMessageCount = 0;
+        _favicon.badge(_newMessageCount);
     });
 
     var showMessenger = function () {
         $('#' + _prefix + '_messenger_content').fadeIn();
+        _favicon = new Favico({
+            animation: 'none'
+        });
         setInterval(receive, _receiveIntervall);
         receive();
     };
@@ -76,6 +84,8 @@ var MyEnvoySecure = function (element_prefix, server_script) {
                 $('#' + _prefix + '_message_log').append(msg);
                 if (_playSound) {
                     playSound();
+                    _newMessageCount++;
+                    _favicon.badge(_newMessageCount);
                 }
             }
             if (needScrolling) {
