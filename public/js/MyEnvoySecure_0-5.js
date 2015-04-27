@@ -1,4 +1,4 @@
-/* global CryptoJS */
+/* global CryptoJS, emoji_icons */
 
 var MyEnvoySecure = function (element_prefix, server_script) {
 
@@ -9,10 +9,14 @@ var MyEnvoySecure = function (element_prefix, server_script) {
     var _prefix = element_prefix;
     var _receiveIntervall = 2000;
     var _server = server_script;
-    var _audioElement;
     var _playSound = false;
 
+    var _audioElement;
+    var _wysiwyg;
+
     $.getScript('js/jquery.qrcode.js');
+    $.getScript('js/jquery.emojiarea.min.js');
+    $.getScript('js/initEmojis.js');
 
     $(window).blur(function () {
         _playSound = true;
@@ -21,6 +25,10 @@ var MyEnvoySecure = function (element_prefix, server_script) {
     });
 
     var showMessenger = function () {
+        _wysiwyg = $('textarea#' + _prefix + '_message_txtArea').emojiarea({
+            button: '#' + _prefix + '_emoji_button'
+        });
+        $('div.emoji-wysiwyg-editor').on("keydown", messageBoxSend);
         $('#' + _prefix + '_messenger_content').fadeIn();
         setInterval(receive, _receiveIntervall);
         receive();
@@ -54,6 +62,8 @@ var MyEnvoySecure = function (element_prefix, server_script) {
                 messageData = $.parseJSON(messageData);
                 var name = messageData.name;
                 var content = messageData.content;
+                // replace emojis
+                content = content.supplant($.emojiarea.iconsReplace[0]['icons']);
                 var date = messageData.date;
                 _id = data[i].id;
                 var msgClass = _prefix + '_you';
@@ -89,11 +99,10 @@ var MyEnvoySecure = function (element_prefix, server_script) {
         });
     };
 
-    $('textarea#' + _prefix + '_message_txtArea').bind("keydown", function (e) {
+    var messageBoxSend = function (e) {
         if (e.keyCode === 13) {
             e.preventDefault();
-            var msg = $(this).val();
-
+            var msg = _wysiwyg.val();
             if ($('#' + _prefix + '_name').val() === '') {
                 showAlert("Please enter a name.", true);
                 return;
@@ -119,17 +128,17 @@ var MyEnvoySecure = function (element_prefix, server_script) {
             }).done(function (data) {
                 if (data.status === false) {
                     showAlert("The message couldn't be sent! Please try to reload the page.", true);
-                    $('textarea#' + _prefix + '_message_txtArea').val(msg);
+                    $('div.emoji-wysiwyg-editor').html(msg);
                 } else {
                     hideAlert();
                 }
             }).fail(function () {
                 requestFail();
-                $('textarea#' + _prefix + '_message_txtArea').val(msg);
+                $('div.emoji-wysiwyg-editor').html(msg);
             });
-            $(this).val(null);
+            $('div.emoji-wysiwyg-editor').empty();
         }
-    });
+    };
 
     $('#' + _prefix + '_connect').click(function () {
         showLoader();
@@ -327,5 +336,14 @@ var MyEnvoySecure = function (element_prefix, server_script) {
     if (_locationHash !== '') {
         $('#' + _prefix + '_channel').val(_locationHash);
         hideAlternate();
+    }
+
+    if (typeof String.prototype.supplant !== 'function') {
+        String.prototype.supplant = function (o) {
+            return this.replace(/:([^{\s::}]*):/g, function (a, b) {
+                var r = o[b];
+                return typeof r === 'string' ? '<img src="' + $.emojiarea.pathReplace + r + '" alt="emoji">' : a;
+            });
+        };
     }
 };

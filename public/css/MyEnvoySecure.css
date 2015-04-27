@@ -3,6 +3,72 @@
     Author     : Fabi Maier
 */
 
+.emoji-wysiwyg-editor img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin: -3px 0 0 0;
+}
+
+.emoji-menu {
+    position: absolute;
+    z-index: 999;
+    width: 180px;
+    margin-left: -180px;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-top: -225px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.emoji-menu > div {
+    height: 200px;
+    background: #fff;
+    width: 200px;
+    overflow: auto;
+    border-radius: 3px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    padding: 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.emoji-menu img {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    border: 0 none;
+}
+
+.emoji-menu a {
+    margin: -1px 0 0 -1px;
+    border: 1px solid #f2f2f2;
+    padding: 5px;
+    display: block;
+    float: left;
+}
+
+.emoji-menu a:hover {
+    background-color: #fffae7;
+}
+
+.emoji-menu:after {
+    content: ' ';
+    display: block;
+    clear: left;
+}
+
+.emoji-menu .group-selector, .emoji-menu a .label {
+    display: none;
+}
+
+.mes_message_content img {
+    width: 20px;
+    height: 20px;
+}
+
 @media only screen and (min-width: 1220px) {
 
     div#mes_messenger_form {
@@ -106,7 +172,7 @@
         display: none;
     }
 
-    textarea.mes_input {
+    textarea.mes_input, .emoji-wysiwyg-editor {
         width: 98.1%;
         margin-top: 10px;
         height: 100px;
@@ -118,7 +184,7 @@
         transition: all 0.5s ease;
     }
 
-    textarea.mes_input:focus {
+    textarea.mes_input:focus, .emoji-wysiwyg-editor:focus {
         box-shadow: 0 0 2px #66ccff;
         background-color: #fff;
         border: 1px solid #66ccff;
@@ -244,6 +310,23 @@
         text-decoration: none;
         color: #0099ff;
     }
+
+    div#mes_emoji_container {
+        float: right;
+        padding: 15px 5px 0px 0px;
+    }
+
+    button#mes_emoji_button {
+        background-image: url('../img/emoji/smile.png');
+        background-size: 25px 25px;
+        background-repeat: no-repeat;
+        width: 25px;
+        height: 25px;
+        border: none;
+        padding: 0px;
+        background-color: transparent;
+        cursor: pointer;
+    }
 }
 
 @media only screen and (max-width: 1220px) {
@@ -364,7 +447,7 @@
         display: none;
     }
 
-    textarea.mes_input {
+    textarea.mes_input, .emoji-wysiwyg-editor {
         position: absolute;
         bottom: 0px;
         left: 5px;
@@ -379,7 +462,7 @@
         transition: all 0.5s ease;
     }
 
-    textarea.mes_input:focus {
+    textarea.mes_input:focus, .emoji-wysiwyg-editor:focus {
         box-shadow: 0 0 2px #66ccff;
         background-color: #fff;
         border: 1px solid #66ccff;
@@ -497,7 +580,7 @@
         text-align: center;
         padding-top: 30px;
     }
-    
+
     div#mes_window_content_qr canvas {
         width: 90%;
     }
@@ -510,5 +593,9 @@
     div#mes_window_content a {
         text-decoration: none;
         color: #0099ff;
+    }
+
+    div#mes_emoji_container {
+        display: none;
     }
 }
