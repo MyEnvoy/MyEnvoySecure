@@ -15,7 +15,11 @@ include '../core/MyEnvoySecure.class.php';
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3.js"></script>
         <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
-        <script src="js/MyEnvoySecure_0-5.js"></script>
+        <script src="js/jquery.emojiarea.min.js"></script>
+        <script src="js/initEmojis.js"></script>
+        <script src="js/jquery.qrcode.js"></script>
+        <script src="js/favico.min.js"></script>
+        <script src="js/MyEnvoySecure.js"></script>
     </head>
     <body>
         <div id="header">

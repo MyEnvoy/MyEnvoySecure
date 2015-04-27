@@ -11,15 +11,12 @@ var MyEnvoySecure = function (element_prefix, server_script) {
     var _server = server_script;
     var _playSound = false;
     var _newMessageCount = 0;
-    var _favicon;
 
+    var _favicon = new Favico({
+        animation: 'none'
+    });
     var _audioElement;
     var _wysiwyg;
-
-    $.getScript('js/jquery.emojiarea.min.js');
-    $.getScript('js/initEmojis.js');
-    $.getScript('js/favico.min.js');
-    $.getScript('js/jquery.qrcode.js');
 
     $(window).blur(function () {
         _playSound = true;
@@ -35,9 +32,6 @@ var MyEnvoySecure = function (element_prefix, server_script) {
         });
         $('div.emoji-wysiwyg-editor').on("keydown", messageBoxSend);
         $('#' + _prefix + '_messenger_content').fadeIn();
-        _favicon = new Favico({
-            animation: 'none'
-        });
         setInterval(receive, _receiveIntervall);
         receive();
     };
