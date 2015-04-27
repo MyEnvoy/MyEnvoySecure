@@ -10,18 +10,23 @@ var MyEnvoySecure = function (element_prefix, server_script) {
     var _receiveIntervall = 2000;
     var _server = server_script;
     var _playSound = false;
+    var _newMessageCount = 0;
+    var _favicon;
 
     var _audioElement;
     var _wysiwyg;
 
-    $.getScript('js/jquery.qrcode.js');
     $.getScript('js/jquery.emojiarea.min.js');
     $.getScript('js/initEmojis.js');
+    $.getScript('js/favico.min.js');
+    $.getScript('js/jquery.qrcode.js');
 
     $(window).blur(function () {
         _playSound = true;
     }).focus(function () {
         _playSound = false;
+        _newMessageCount = 0;
+        _favicon.badge(_newMessageCount);
     });
 
     var showMessenger = function () {
@@ -30,6 +35,9 @@ var MyEnvoySecure = function (element_prefix, server_script) {
         });
         $('div.emoji-wysiwyg-editor').on("keydown", messageBoxSend);
         $('#' + _prefix + '_messenger_content').fadeIn();
+        _favicon = new Favico({
+            animation: 'none'
+        });
         setInterval(receive, _receiveIntervall);
         receive();
     };
@@ -86,6 +94,8 @@ var MyEnvoySecure = function (element_prefix, server_script) {
                 $('#' + _prefix + '_message_log').append(msg);
                 if (_playSound) {
                     playSound();
+                    _newMessageCount++;
+                    _favicon.badge(_newMessageCount);
                 }
             }
             if (needScrolling) {

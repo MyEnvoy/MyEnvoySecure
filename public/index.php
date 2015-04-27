@@ -11,6 +11,7 @@ include '../core/MyEnvoySecure.class.php';
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" media="screen" type="text/css" href="css/main.css">
         <link rel="stylesheet" media="screen" type="text/css" href="css/MyEnvoySecure.css">
+        <link rel="shortcut icon" href="favicon.ico">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3.js"></script>
         <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
