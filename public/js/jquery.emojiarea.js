@@ -200,7 +200,7 @@
             $button = $('');
         }
 
-        $button.on('mouseover', function (e) {
+        $button.on('click', function (e) {
             EmojiMenu.show(self);
             e.stopPropagation();
         });
