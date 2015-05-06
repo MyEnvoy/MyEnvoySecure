@@ -3,26 +3,46 @@
     Author     : Fabi Maier
 */
 
-.emoji-wysiwyg-editor img {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-    margin: -3px 0 0 0;
+#mes_emojiArea {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 15px;
+    min-height: 100px;
+    font-family: Arial;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: all 0.5s ease;
 }
 
-.emoji-menu {
+#mes_emojiArea:focus {
+    box-shadow: 0 0 2px #66ccff;
+    background-color: #fff;
+    border: 1px solid #66ccff;
+    outline: none;
+}
+
+.visible {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+#mes_emojiMenu {
     position: absolute;
     z-index: 999;
     width: 180px;
     margin-left: -180px;
+    margin-top: -225px;
     padding: 0;
     overflow: hidden;
     box-sizing: border-box;
-    margin-top: -225px;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 
-.emoji-menu > div {
+#mes_emojiMenu > div {
     height: 200px;
     background: #fff;
     width: 200px;
@@ -35,14 +55,20 @@
     overflow-y: auto;
 }
 
-.emoji-menu img {
+#mes_emojiMenu img, #mes_emojiArea img {
     width: 25px;
     height: 25px;
     vertical-align: middle;
     border: 0 none;
 }
 
-.emoji-menu a {
+#mes_emojiArea img {
+    width: 20px;
+    height: 20px;
+    margin-top: -5px;
+}
+
+#mes_emojiMenu a {
     margin: -1px 0 0 -1px;
     border: 1px solid #f2f2f2;
     padding: 5px;
@@ -50,18 +76,21 @@
     float: left;
 }
 
-.emoji-menu a:hover {
-    background-color: #fffae7;
+#mes_emojiMenuBtnWrapper {
+    float: right;
+    padding: 5px 5px 0px 0px;
 }
 
-.emoji-menu:after {
-    content: ' ';
-    display: block;
-    clear: left;
-}
-
-.emoji-menu .group-selector, .emoji-menu a .label {
-    display: none;
+#mes_emojiMenuBtn {
+    background-image: url('../img/emoji/smile.png');
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    border: none;
+    padding: 0px;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .mes_message_content img {
@@ -172,7 +201,7 @@
         display: none;
     }
 
-    textarea.mes_input, .emoji-wysiwyg-editor {
+    div.mes_input {
         width: 98.1%;
         margin-top: 10px;
         height: 100px;
@@ -184,11 +213,8 @@
         transition: all 0.5s ease;
     }
 
-    textarea.mes_input:focus, .emoji-wysiwyg-editor:focus {
-        box-shadow: 0 0 2px #66ccff;
-        background-color: #fff;
-        border: 1px solid #66ccff;
-        outline: none;
+    div#mes_emojiMenuBtnWrapper {
+        padding: 15px 5px 0px 0px;
     }
 
     div.mes_message {
@@ -310,23 +336,6 @@
         text-decoration: none;
         color: #0099ff;
     }
-
-    div#mes_emoji_container {
-        float: right;
-        padding: 15px 5px 0px 0px;
-    }
-
-    button#mes_emoji_button {
-        background-image: url('../img/emoji/smile.png');
-        background-size: 25px 25px;
-        background-repeat: no-repeat;
-        width: 25px;
-        height: 25px;
-        border: none;
-        padding: 0px;
-        background-color: transparent;
-        cursor: pointer;
-    }
 }
 
 @media only screen and (max-width: 1220px) {
@@ -447,26 +456,24 @@
         display: none;
     }
 
-    textarea.mes_input, .emoji-wysiwyg-editor {
+    div#mes_emojiArea {
         position: absolute;
         bottom: 0px;
-        left: 5px;
-        right: 5px;
-        height: 15px;
-        width: 90%;
-        resize: none;
-        font-family: Arial;
+        left: 0px;
+        right: 0px;
+        height: 40px;
+        min-height: 40px;
+        max-height: 40px;
         padding: 10px;
-        border: 1px solid #cccccc;
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
-        transition: all 0.5s ease;
     }
 
-    textarea.mes_input:focus, .emoji-wysiwyg-editor:focus {
-        box-shadow: 0 0 2px #66ccff;
-        background-color: #fff;
-        border: 1px solid #66ccff;
-        outline: none;
+    #mes_emojiMenuBtnWrapper {
+        position: absolute;
+        float: none;
+        width: 25px;
+        bottom: 5px;
+        right: 5px;
+        z-index: 12;
     }
 
     div.mes_message {
@@ -593,9 +600,5 @@
     div#mes_window_content a {
         text-decoration: none;
         color: #0099ff;
-    }
-
-    div#mes_emoji_container {
-        display: none;
     }
 }

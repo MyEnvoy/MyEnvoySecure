@@ -110,10 +110,7 @@ class MyEnvoySecure {
 
                 </div>
                 <div id="%1$s_scrollarrow"></div>
-                <div id="%1$s_emoji_container">
-                    <button id="%1$s_emoji_button"></button>
-                </div>
-                <textarea id="%1$s_message_txtArea" class="%1$s_input" placeholder="Message" maxlength="6000"></textarea>
+                <div id="%1$s_emojiArea" class="%1$s_input"></div>
             </div>
         </div>
         <script>
