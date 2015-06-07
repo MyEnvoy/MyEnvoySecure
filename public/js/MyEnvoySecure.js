@@ -142,6 +142,13 @@ var MyEnvoySecure = function (element_prefix, server_script) {
             $(_wysiwyg.editor).empty();
         }
     };
+    
+    $('#' + _prefix + '_password').on('keydown', function(e) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            $('#' + _prefix + '_connect').trigger('click');
+        }
+    });
 
     $('#' + _prefix + '_connect').click(function () {
         showLoader();

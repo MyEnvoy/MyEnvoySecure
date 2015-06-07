@@ -12,13 +12,13 @@ include '../core/MyEnvoySecure.class.php';
         <link rel="stylesheet" media="screen" type="text/css" href="css/main.css">
         <link rel="stylesheet" media="screen" type="text/css" href="css/MyEnvoySecure.css">
         <link rel="icon" href="favicon.ico">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3.js"></script>
-        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
-        <script src="js/EmojiPicker.js"></script>
-        <script src="js/initEmojis.js"></script>
+        <script src="js/1.9.1_jquery.min.js"></script>
+        <script src="js/crypto-js.sha3.min.js"></script>
+        <script src="js/crypto-js.aes.min.js"></script>
         <script src="js/jquery.qrcode.js"></script>
         <script src="js/favico.min.js"></script>
+        <script src="js/EmojiPicker.js"></script>
+        <script src="js/initEmojis.js"></script>
         <script src="js/MyEnvoySecure.js"></script>
     </head>
     <body>
