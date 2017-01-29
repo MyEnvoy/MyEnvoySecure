@@ -62,7 +62,7 @@ var MyEnvoySecure = function (element_prefix, server_script) {
                 var messageData = decryptData(data[i].data).toString(CryptoJS.enc.Utf8);
                 messageData = $.parseJSON(messageData);
                 var name = messageData.name;
-                var content = messageData.content;
+                var content = escapeHtml(messageData.content);
                 // replace emojis
                 content = _wysiwyg.render(content);
                 var date = messageData.date;
@@ -100,6 +100,15 @@ var MyEnvoySecure = function (element_prefix, server_script) {
         }).fail(function () {
             requestFail();
         });
+    };
+    
+    var escapeHtml = function (text) {
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     };
 
     var messageBoxSend = function (e) {
